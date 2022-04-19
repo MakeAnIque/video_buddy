@@ -1,0 +1,48 @@
+{
+  "root": "packages/vb-media-streaming",
+  "sourceRoot": "packages/vb-media-streaming/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/vb-media-streaming",
+        "main": "packages/vb-media-streaming/src/index.ts",
+        "tsConfig": "packages/vb-media-streaming/tsconfig.lib.json",
+        "assets": ["packages/vb-media-streaming/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/vb-media-streaming/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/vb-media-streaming"],
+      "options": {
+        "jestConfig": "packages/vb-media-streaming/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npm publish --tag=latest --access public"
+      }
+    },
+    "package-manage": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "{args.command}",
+        "cwd": "packages/vb-media-streaming",
+        "parallel": false
+      }
+    }
+  },
+  "tags": ["scope:server;type:lib"]
+}
