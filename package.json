@@ -4,8 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "postinstall": "husky install",
-    "commit": "npx cz"
+    "postinstall": "husky install"
   },
   "private": false,
   "dependencies": {
